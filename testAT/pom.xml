@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>com.bbva.datioamproduct</groupId>
-        <artifactId>2022Q3G5</artifactId>
+        <artifactId>2022Q3GX</artifactId>
         <version>0.1.1-SNAPSHOT</version>
     </parent>
 

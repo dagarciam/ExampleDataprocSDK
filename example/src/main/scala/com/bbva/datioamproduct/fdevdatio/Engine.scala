@@ -35,19 +35,6 @@ class Engine extends SparkProcess with IOUtils {
       val customersConfig: Config = config.getConfig(ExampleConfigConstants.CustomersConfig)
       val customersDF: DataFrame = read(customersConfig)
 
-      val df: DataFrame = phonesDF
-        .join(customersDF,
-          Seq("customer_id", "delivery_id"),
-          "inner"
-        )
-
-      df.select(
-        df.columns.map(col) :+
-          concat(col("delivery_id"), col("customer_id")).alias("new_key"): _*
-      )
-        .show(100)
-
-      /*
       // Regla 1, 2, 3
       val customerPhonesDF: CustomersPhonesTransformer = phonesDF.filterPhones().join(
         customersDF.filterCustomers(),
@@ -67,7 +54,7 @@ class Engine extends SparkProcess with IOUtils {
 
       //Writing output (read conf file format)
       val customersPhonesConfig: Config = config.getConfig(ExampleConfigConstants.CustomersPhonesConfig)
-      write(outputDF,customersPhonesConfig)*/
+      write(outputDF,customersPhonesConfig)
 
     } match {
       case Success(_) => OK
