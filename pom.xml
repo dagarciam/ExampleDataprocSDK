@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.datio</groupId>
+        <artifactId>spark-pom-parent</artifactId>
+        <version>1.0.4-3.1</version>
+    </parent>
+
+    <groupId>com.bbva.datioamproduct</groupId>
+    <artifactId>2022Q3GX</artifactId>
+    <packaging>pom</packaging>
+    <version>0.1.1-SNAPSHOT</version>
+
+    <name>Parent 2022Q3G5</name>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.datio.dataproc.sdk</groupId>
+                <artifactId>dataproc-sdk-bom</artifactId>
+                <version>0.3.8-3.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- Add global dependencies for project -->
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <!-- Add plugins for project -->
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <!-- Add global plugins fot project -->
+
+        </plugins>
+    </build>
+
+    <modules>
+        <module>commons</module>
+        <module>example</module>
+        <module>testAT</module>
+    </modules>
+</project>
