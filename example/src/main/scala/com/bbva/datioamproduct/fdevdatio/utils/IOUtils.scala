@@ -1,11 +1,11 @@
 package com.bbva.datioamproduct.fdevdatio.utils
 
+import com.bbva.datioamproduct.fdevdatio.common.ConfigConstants._
 import com.datio.dataproc.sdk.datiosparksession.DatioSparkSession
 import com.datio.dataproc.sdk.io.output.DatioDataFrameWriter
 import com.datio.dataproc.sdk.schema.DatioSchema
 import com.typesafe.config.Config
 import org.apache.spark.sql.{DataFrame, SaveMode}
-import com.bbva.datioamproduct.fdevdatio.common.ConfigConstants._
 
 import java.net.URI
 

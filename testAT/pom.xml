@@ -5,13 +5,13 @@
 
     <parent>
         <groupId>com.bbva.datioamproduct</groupId>
-        <artifactId>2022Q3GX</artifactId>
-        <version>0.1.1-SNAPSHOT</version>
+        <artifactId>ExampleDataProcSDK</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>testAT</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
 
     <name>2022Q3G5 Acceptance Tests</name>
 
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.bbva.datioamproduct</groupId>
             <artifactId>example</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.1.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>

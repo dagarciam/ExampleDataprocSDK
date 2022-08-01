@@ -1,11 +1,12 @@
 package com.bbva.datioamproduct.fdevdatio.transformations
 
-import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals._
-import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers.{CityName, CreditCardNumber, FirstName, GlDate, LastName, StreetName}
-import com.bbva.datioamproduct.fdevdatio.common.namings.input.Phones.{Brand, CountryCode, CutoffDate, DiscountAmount, Model, Nfc, PriceProduct, Prime, Taxes}
-import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones.{Age, BrandsTop, CustomerVip, ExtraDiscount, FinalPrice, JwkDate}
-import org.apache.spark.sql.{Column, DataFrame}
+import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals.{FIFTY, NO}
+import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers._
+import com.bbva.datioamproduct.fdevdatio.common.namings.input.Phones._
+import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones._
 import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.{Column, DataFrame}
+
 
 object Transformations {
 
