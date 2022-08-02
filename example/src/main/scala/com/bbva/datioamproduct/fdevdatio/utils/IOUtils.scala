@@ -17,15 +17,15 @@ trait IOUtils {
 
     inputConfig.getString(Type) match {
       case "parquet" =>
-        val schemaPath: String = inputConfig.getString(SchemaPath)
-        val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
-        val overrideSchema: String = inputConfig.getString(OverrideSchema)
-        val mergeSchema: String = inputConfig.getString(MergeSchema)
+        //val schemaPath: String = inputConfig.getString(SchemaPath)
+        //val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
+        //val overrideSchema: String = inputConfig.getString(OverrideSchema)
+        //val mergeSchema: String = inputConfig.getString(MergeSchema)
 
         datioSparkSession.read()
-          .option(OverrideSchemaOption, overrideSchema)
-          .option(MergeSchemaOption, mergeSchema)
-          .datioSchema(schema)
+          //.option(OverrideSchemaOption, overrideSchema)
+          //.option(MergeSchemaOption, mergeSchema)
+          //.datioSchema(schema)
           .parquet(path)
 
       case "csv" =>
