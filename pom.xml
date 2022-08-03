@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>com.bbva.datioamproduct</groupId>
-    <artifactId>2022Q3GX</artifactId>
+    <artifactId>ExampleDataProcSDK</artifactId>
     <packaging>pom</packaging>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
 
-    <name>Parent 2022Q3G5</name>
+    <name>Parent Example Dataproc SDK</name>
 
     <dependencyManagement>
         <dependencies>
@@ -56,7 +56,6 @@
     </build>
 
     <modules>
-        <module>commons</module>
         <module>example</module>
         <module>testAT</module>
     </modules>

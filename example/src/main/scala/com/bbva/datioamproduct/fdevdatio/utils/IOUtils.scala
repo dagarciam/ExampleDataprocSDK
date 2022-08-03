@@ -1,11 +1,11 @@
 package com.bbva.datioamproduct.fdevdatio.utils
 
+import com.bbva.datioamproduct.fdevdatio.common.ConfigConstants.{OverrideSchema, OverrideSchemaOption, _}
 import com.datio.dataproc.sdk.datiosparksession.DatioSparkSession
 import com.datio.dataproc.sdk.io.output.DatioDataFrameWriter
 import com.datio.dataproc.sdk.schema.DatioSchema
 import com.typesafe.config.Config
 import org.apache.spark.sql.{DataFrame, SaveMode}
-import com.bbva.datioamproduct.fdevdatio.common.ConfigConstants._
 
 import java.net.URI
 
@@ -16,7 +16,17 @@ trait IOUtils {
     val path: String = inputConfig.getString(Path)
 
     inputConfig.getString(Type) match {
-      case "parquet" => datioSparkSession.read().parquet(path)
+      case "parquet" =>
+        val schemaPath: String = inputConfig.getString(SchemaPath)
+        val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
+        val overrideSchema: String = inputConfig.getString(OverrideSchema)
+        val mergeSchema: String = inputConfig.getString(MergeSchema)
+
+        datioSparkSession.read()
+          .option(OverrideSchemaOption, overrideSchema)
+          .option(MergeSchemaOption, mergeSchema)
+          .datioSchema(schema)
+          .parquet(path)
 
       case "csv" =>
         val schemaPath: String = inputConfig.getString(SchemaPath)

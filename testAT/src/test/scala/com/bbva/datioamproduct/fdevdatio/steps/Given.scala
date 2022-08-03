@@ -1,8 +1,8 @@
 package com.bbva.datioamproduct.fdevdatio.steps
 
+import com.bbva.datioamproduct.fdevdatio.utils.Common
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.scalatest.Matchers
-import com.bbva.datioamproduct.fdevdatio.utils.Common
 import com.datio.dataproc.sdk.datiosparksession.DatioSparkSession
 import org.apache.spark.sql.DataFrame
 

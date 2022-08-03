@@ -1,10 +1,10 @@
 package com.bbva.datioamproduct.fdevdatio.transformations
 
-import com.bbva.datioamproduct.fdevdatio.common.ExampleConfigConstants._
+import com.bbva.datioamproduct.fdevdatio.common.ExampleConfigConstants.{CustomersConfig, PhonesConfig}
 import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals.JoinTypes
-import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers.{CreditCardNumber, CustomerId}
-import com.bbva.datioamproduct.fdevdatio.common.namings.input.Phones.{CountryCode, DeliveryId}
-import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones.{BrandsTop, CustomerVip, ExtraDiscount, FinalPrice}
+import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers.{CustomerId, DeliveryId, _}
+import com.bbva.datioamproduct.fdevdatio.common.namings.input.Phones._
+import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones._
 import com.bbva.datioamproduct.fdevdatio.testUtils.ContextProvider
 import com.bbva.datioamproduct.fdevdatio.transformations.Transformations.{CustomersPhonesTransformer, CustomersTransformer, PhonesTransformer}
 import com.bbva.datioamproduct.fdevdatio.utils.IOUtils
@@ -67,7 +67,7 @@ class TransformationsTest extends ContextProvider with IOUtils {
 
     val outputDF = inputDF.filterBrandsTop()
 
-    inputDF.columns should not contain ("brands_top")
+    inputDF.columns should not contain "brands_top"
     outputDF.columns should contain("brands_top")
     outputDF.filter(BrandsTop.column > 50).count() should be(0)
 
