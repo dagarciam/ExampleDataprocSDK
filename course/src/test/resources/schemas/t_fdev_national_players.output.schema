@@ -1,0 +1,40 @@
+{
+  "namespace": "kdit",
+  "name": "t_kdit_nat_players",
+  "doc": "tabla de jugadores nacionales",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/kdit/data/t_kdit_nat_players",
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "sofifa_id",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "nation_team_id",
+    "type": ["double","null"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "nation_position",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(4)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "nation_jersey_number",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }]
+}

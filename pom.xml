@@ -57,6 +57,7 @@
 
     <modules>
         <module>example</module>
+        <module>course</module>
         <module>testAT</module>
     </modules>
 </project>

@@ -1,0 +1,466 @@
+{
+  "namespace": "fdev",
+  "name": "t_fdev_players",
+  "doc": "Tabla que contiene el historico de clientes dictaminados por el Comite de Comunicacion y Control (CCC).",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/fdev/data/t_fdev_players",
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "sofifa_id",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "short_name",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(25)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "long_name",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "player_positions",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(12)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "overall",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "potential",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "value_eur",
+    "type": ["null", "double"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": null,
+    "format": "8,1",
+    "locale": "mx"
+  }, {
+    "name": "wage_eur",
+    "type": ["null", "double"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": null,
+    "format": "7,1",
+    "locale": "mx"
+  }, {
+    "name": "age",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "dob",
+    "type": "timestamp",
+    "logicalFormat": "TIMESTAMP",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-dd HH:mm:SS",
+    "locale": "mx"
+  }, {
+    "name": "height_cm",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "weight_kg",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "club_team_id",
+    "type": ["null", "double"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "nationality_id",
+    "type": "int32",
+    "logicalFormat": "NUMERIC LARGE",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "nation_team_id",
+    "type": ["null", "decimal(8,1)"],
+    "logicalFormat": "DECIMAL(8,1)",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "preferred_foot",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(5)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "weak_foot",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "skill_moves",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "international_reputation",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "work_rate",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(13)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "body_type",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(16)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "player_tags",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(110)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "player_traits",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(130)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "pace",
+    "type": ["null", "int32"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "shooting",
+    "type": ["null", "int32"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "passing",
+    "type": ["null", "int32"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "dribbling",
+    "type": ["null", "int32"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "defending",
+    "type": ["null", "int32"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "physic",
+    "type": ["null", "int32"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "attacking_crossing",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "attacking_finishing",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "attacking_heading_accuracy",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "attacking_short_passing",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "attacking_volleys",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "skill_dribbling",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "skill_curve",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "skill_fk_accuracy",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "skill_long_passing",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "skill_ball_control",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "movement_acceleration",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "movement_sprint_speed",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "movement_agility",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "movement_reactions",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "movement_balance",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "power_shot_power",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "power_jumping",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "power_stamina",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "power_strength",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "power_long_shots",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "mentality_aggression",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "mentality_interceptions",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "mentality_positioning",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "mentality_vision",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "mentality_penalties",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "mentality_composure",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "defending_marking_awareness",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "defending_standing_tackle",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "defending_sliding_tackle",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "goalkeeping_diving",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "goalkeeping_handling",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "goalkeeping_kicking",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "goalkeeping_positioning",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "goalkeeping_reflexes",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "goalkeeping_speed",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }]
+}
