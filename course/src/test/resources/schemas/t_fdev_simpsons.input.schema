@@ -1,0 +1,100 @@
+{
+  "namespace": "fdev",
+  "name": "t_fdev_simpsons",
+  "doc": "Tabla ejemplo de examen Enero",
+  "database": "raw",
+  "type": "record",
+  "fields": [{
+    "name": "id",
+    "type": "integer",
+    "logicalFormat": "NUMERIC BIG",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "image_url",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "rating",
+    "type": "float",
+    "logicalFormat": "DECIMAL(7,2)",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "votes",
+    "type": "long",
+    "logicalFormat": "NUMERIC BIG",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "number_in_season",
+    "type": "integer",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "number_in_series",
+    "type": "integer",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+     "name": "original_air_date",
+     "type": "string",
+     "logicalFormat": "NUMERIC SHORT",
+     "deleted": false,
+     "metadata": false,
+     "default": ""
+  }, {
+    "name": "original_air_year",
+    "type": "integer",
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "production_code",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "season",
+    "type": "integer",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "title",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+}, {
+    "name": "viewers_in_millions",
+    "type": "float",
+    "logicalFormat": "DECIMAL(7,2)",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+}, {
+    "name": "video_url",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }
+  ]
+}

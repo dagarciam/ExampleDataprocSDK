@@ -1,0 +1,41 @@
+{
+  "namespace": "fdev",
+  "name": "t_fdev_club_teams",
+  "doc": "Tabla que contiene el historico de clientes dictaminados por el Comite de Comunicacion y Control (CCC).",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/fdev/data/t_smd_club_players",
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "club_team_id",
+    "type": ["null","double"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "locale": "mx"
+  }, {
+    "name": "club_name",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "league_name",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "league_level",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }]
+}

@@ -31,8 +31,11 @@
     "default": ""
   }, {
     "name": "player_positions",
-    "type": "string",
-    "logicalFormat": "ALPHANUMERIC(12)",
+    "type": {
+        "type": "array",
+        "items": "string"
+    },
+    "logicalFormat": "ARRAY",
     "deleted": false,
     "metadata": false,
     "default": ""
@@ -170,8 +173,11 @@
     "default": ""
   }, {
     "name": "player_traits",
-    "type": ["string", "null"],
-    "logicalFormat": "ALPHANUMERIC(130)",
+    "type": [{
+        "type": "array",
+        "items": "string"
+    }, "null"],
+    "logicalFormat": "ARRAY",
     "deleted": false,
     "metadata": false,
     "default": ""
@@ -457,10 +463,99 @@
     "default": 0
   }, {
     "name": "goalkeeping_speed",
-    "type": "int32",
+    "type": ["int32", "null"],
     "logicalFormat": "NUMERIC SHORT",
     "deleted": false,
     "metadata": false,
     "default": 0
-  }]
+  }, {
+    "name": "club_position",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(3)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "club_jersey_number",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERICS SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "club_loaned_from",
+    "type": ["null","double"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "locale": "mx"
+  }, {
+    "name": "club_joined",
+    "type": ["timestamp", "null"],
+    "logicalFormat": "TIMESTAMP",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-ddTHH:mm:ss",
+    "locale": "mx"
+  }, {
+    "name": "club_contract_valid_until",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "release_clause_eur",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+     "name": "club_name",
+     "type": ["string", "null"],
+     "logicalFormat": "ALPHANUMERIC(50)",
+     "deleted": false,
+     "metadata": false,
+     "default": ""
+   }, {
+     "name": "league_name",
+     "type": ["string", "null"],
+     "logicalFormat": "ALPHANUMERIC(50)",
+     "deleted": false,
+     "metadata": false,
+     "default": ""
+   }, {
+     "name": "league_level",
+     "type": ["int32", "null"],
+     "logicalFormat": "NUMERIC SHORT",
+     "deleted": false,
+     "metadata": false,
+     "default": ""
+   }, {
+      "name": "nation_position",
+      "type": ["string", "null"],
+      "logicalFormat": "ALPHANUMERIC(4)",
+      "deleted": false,
+      "metadata": false,
+      "default": ""
+    }, {
+      "name": "nation_jersey_number",
+      "type": ["int32", "null"],
+      "logicalFormat": "NUMERIC SHORT",
+      "deleted": false,
+      "metadata": false,
+      "default": 0
+    }, {
+     "name": "nationality_name",
+     "type": "string",
+     "logicalFormat": "ALPHANUMERIC(24)",
+     "deleted": false,
+     "metadata": false,
+     "default": ""
+   }
+  ]
 }
+

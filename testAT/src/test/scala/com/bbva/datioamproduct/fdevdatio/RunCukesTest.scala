@@ -5,7 +5,10 @@ import org.junit.runner.RunWith
 
 @RunWith(classOf[Cucumber])
 @CucumberOptions(
-  features = Array("src/test/resources/features/Example.feature"),
+  features = Array(
+    //"src/test/resources/features/Example.feature",
+    "src/test/resources/features/Course.feature"
+  ),
   glue = Array("com.bbva.datioamproduct.fdevdatio.steps"),
   strict = true,
   plugin = Array("pretty"))

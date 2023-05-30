@@ -1,12 +1,12 @@
 package com.bbva.datioamproduct.fdevdatio.common
 
-object ConfigConstants {
+object ConfigConstantsCourse {
 
   val Options: String = "options"
   val IncludeMetadataFields: String = s"$Options.includeMetadataFields"
   val IncludeDeletedFields: String = s"$Options.includeDeletedFields"
   val PartitionOverwriteMode: String = s"$Options.partitionOverwriteMode"
-  val CoalesceNumber: String = s"$Options.coalesce"
+  val Repartition: String = s"$Options.repartition"
 
   val Schema: String = "schema"
   val Path: String = "path"
@@ -14,9 +14,10 @@ object ConfigConstants {
   val SchemaPath: String = s"$Schema.path"
   val OverrideSchema: String = s"$Schema.overrideSchema"
   val MergeSchema: String = s"$Schema.mergeSchema"
-  val PartitionOverwriteModeString: String = s"$Options.partitionOverwriteMode"
+  val PartitionOverwriteModeString: String = "partitionOverwriteMode"
   val Delimiter: String = s"$Options.delimiter"
   val Header: String = s"$Options.header"
+
   val Partitions: String = "partitions"
   val Mode: String = "mode"
 
@@ -24,5 +25,6 @@ object ConfigConstants {
   val HeaderOption: String = "header"
   val OverrideSchemaOption: String = "overrideSchema"
   val MergeSchemaOption: String = "mergeSchema"
+
 
 }

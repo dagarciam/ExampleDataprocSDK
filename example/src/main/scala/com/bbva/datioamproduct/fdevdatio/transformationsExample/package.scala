@@ -1,4 +1,4 @@
-package com.bbva.datioamproduct.fdevdatio.transformations
+package com.bbva.datioamproduct.fdevdatio
 
 import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals.{FIFTY, NO}
 import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers._
@@ -8,7 +8,7 @@ import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{Column, DataFrame}
 
 
-object Transformations {
+package object transformationsExample {
 
   implicit class PhonesTransformer(df: DataFrame) {
 

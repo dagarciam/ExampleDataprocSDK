@@ -1,0 +1,72 @@
+{
+  "namespace": "fdev",
+  "name": "t_fdev_club_players",
+  "doc": "Tabla que contiene el historico de clientes dictaminados por el Comite de Comunicacion y Control (CCC).",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/fdev/data/t_smd_club_players",
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+     "name": "sofifa_id",
+     "type": "int32",
+     "logicalFormat": "NUMERICS SHORT",
+     "deleted": false,
+     "metadata": false,
+     "default": 0
+   }, {
+    "name": "club_team_id",
+    "type": ["double", "null"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "locale": "mx"
+  }, {
+    "name": "club_position",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(3)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "club_jersey_number",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERICS SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "club_loaned_from",
+    "type": ["null","double"],
+    "logicalFormat": "DOUBLE",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "locale": "mx"
+  }, {
+    "name": "club_joined",
+    "type": ["timestamp", "null"],
+    "logicalFormat": "TIMESTAMP",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-ddTHH:mm:ss",
+    "locale": "mx"
+  }, {
+    "name": "club_contract_valid_until",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "release_clause_eur",
+    "type": ["int32", "null"],
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }]
+}

@@ -1,6 +1,6 @@
 package com.bbva.datioamproduct.fdevdatio.utils
 
-import com.bbva.datioamproduct.fdevdatio.common.ConfigConstants._
+import com.bbva.datioamproduct.fdevdatio.common.ConfigConstantsCourse._
 import com.datio.dataproc.sdk.datiosparksession.DatioSparkSession
 import com.datio.dataproc.sdk.io.output.DatioDataFrameWriter
 import com.datio.dataproc.sdk.schema.DatioSchema
@@ -31,11 +31,17 @@ trait IOUtils {
       case "csv" =>
         val schemaPath: String = inputConfig.getString(SchemaPath)
         val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
+        val overrideSchema: String = inputConfig.getString(OverrideSchema)
+        val mergeSchema: String = inputConfig.getString(MergeSchema)
+
         val delimiter: String = inputConfig.getString(Delimiter)
         val header: String = inputConfig.getString(Header)
+
         datioSparkSession.read()
-          .option(Delimiter, delimiter)
-          .option(Header, header)
+          .option(OverrideSchemaOption, overrideSchema)
+          .option(MergeSchemaOption, mergeSchema)
+          .option(DelimiterOption, delimiter)
+          .option(HeaderOption, header)
           .datioSchema(schema)
           .csv(path)
 
@@ -71,6 +77,9 @@ trait IOUtils {
     val partitions: Array[String] = outputConfig.getStringList(Partitions).toArray.map(_.toString)
     val partitionOverwriteMode: String = outputConfig.getString(PartitionOverwriteMode)
 
+    val numRepartition: Int = outputConfig.getInt(Repartition)
+    val finalDF: DataFrame = df.repartition(numRepartition)
+
     val writer: DatioDataFrameWriter = datioSparkSession
       .write()
       .mode(mode)
@@ -79,12 +88,14 @@ trait IOUtils {
       .partitionBy(partitions: _*)
 
     outputConfig.getString(Type) match {
-      case "parquet" => writer.parquet(df, path)
-      case "csv" => writer.csv(df, path)
-      case "avro" => writer.avro(df, path)
+      case "parquet" => writer.parquet(finalDF, path)
+      case "csv" => writer.csv(finalDF, path)
+      case "avro" => writer.avro(finalDF, path)
       case _@outputType => throw new Exception(s"Formato de escritura no soportado: $outputType")
     }
 
-
   }
+
 }
+
+

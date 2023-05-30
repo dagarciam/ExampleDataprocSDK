@@ -9,7 +9,7 @@ import org.apache.spark.sql.{DataFrame, SaveMode}
 
 import java.net.URI
 
-trait IOUtils {
+trait IOUtilsExample {
   lazy val datioSparkSession: DatioSparkSession = DatioSparkSession.getOrCreate()
 
   def read(inputConfig: Config): DataFrame = {
@@ -17,15 +17,15 @@ trait IOUtils {
 
     inputConfig.getString(Type) match {
       case "parquet" =>
-        val schemaPath: String = inputConfig.getString(SchemaPath)
-        val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
-        val overrideSchema: String = inputConfig.getString(OverrideSchema)
-        val mergeSchema: String = inputConfig.getString(MergeSchema)
+        //val schemaPath: String = inputConfig.getString(SchemaPath)
+        //val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
+        //val overrideSchema: String = inputConfig.getString(OverrideSchema)
+        //val mergeSchema: String = inputConfig.getString(MergeSchema)
 
         datioSparkSession.read()
-          .option(OverrideSchemaOption, overrideSchema)
-          .option(MergeSchemaOption, mergeSchema)
-          .datioSchema(schema)
+          //.option(OverrideSchemaOption, overrideSchema)
+          //.option(MergeSchemaOption, mergeSchema)
+          //.datioSchema(schema)
           .parquet(path)
 
       case "csv" =>
@@ -70,6 +70,7 @@ trait IOUtils {
 
     val partitions: Array[String] = outputConfig.getStringList(Partitions).toArray.map(_.toString)
     val partitionOverwriteMode: String = outputConfig.getString(PartitionOverwriteMode)
+    val numPartitions:Int =outputConfig.getInt(NumPartitions)
 
     val writer: DatioDataFrameWriter = datioSparkSession
       .write()
@@ -79,12 +80,11 @@ trait IOUtils {
       .partitionBy(partitions: _*)
 
     outputConfig.getString(Type) match {
-      case "parquet" => writer.parquet(df, path)
-      case "csv" => writer.csv(df, path)
-      case "avro" => writer.avro(df, path)
+      case "parquet" => writer.parquet(df.coalesce(numPartitions), path)
+      case "csv" => writer.csv(df.coalesce(numPartitions), path)
+      case "avro" => writer.avro(df.coalesce(numPartitions), path)
       case _@outputType => throw new Exception(s"Formato de escritura no soportado: $outputType")
     }
-
 
   }
 }

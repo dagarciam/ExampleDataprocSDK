@@ -14,9 +14,10 @@ object ConfigConstants {
   val SchemaPath: String = s"$Schema.path"
   val OverrideSchema: String = s"$Schema.overrideSchema"
   val MergeSchema: String = s"$Schema.mergeSchema"
-  val PartitionOverwriteModeString: String = s"$Options.partitionOverwriteMode"
+  val PartitionOverwriteModeString: String = "partitionOverwriteMode"
   val Delimiter: String = s"$Options.delimiter"
   val Header: String = s"$Options.header"
+  val NumPartitions:String = s"$Options.numPartitions"
   val Partitions: String = "partitions"
   val Mode: String = "mode"
 

@@ -1,4 +1,4 @@
-package com.bbva.datioamproduct.fdevdatio.transformations
+package com.bbva.datioamproduct.fdevdatio.transformationsExample
 
 import com.bbva.datioamproduct.fdevdatio.common.ExampleConfigConstants.{CustomersConfig, PhonesConfig}
 import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals.JoinTypes
@@ -6,12 +6,11 @@ import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers.{Custome
 import com.bbva.datioamproduct.fdevdatio.common.namings.input.Phones._
 import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones._
 import com.bbva.datioamproduct.fdevdatio.testUtils.ContextProvider
-import com.bbva.datioamproduct.fdevdatio.transformations.Transformations.{CustomersPhonesTransformer, CustomersTransformer, PhonesTransformer}
-import com.bbva.datioamproduct.fdevdatio.utils.IOUtils
+import com.bbva.datioamproduct.fdevdatio.utils.IOUtilsExample
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.functions.lit
 
-class TransformationsTest extends ContextProvider with IOUtils {
+class TransformationsTest extends ContextProvider with IOUtilsExample {
   "filterPhones method" should
     "return a DF without values CH, IT, CZ y DK in column country_code" in {
 

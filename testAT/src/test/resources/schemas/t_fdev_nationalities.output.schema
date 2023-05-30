@@ -1,0 +1,26 @@
+{
+  "namespace": "fdev",
+  "name": "t_fdev_nationalities",
+  "doc": "Tabla que contiene el historico de clientes dictaminados por el Comite de Comunicacion y Control (CCC).",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/fdev/data/t_fdev_nationalities",
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "nationality_id",
+    "type": "int32",
+    "logicalFormat": "NUMERIC SHORT",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "nationality_name",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(25)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }]
+}

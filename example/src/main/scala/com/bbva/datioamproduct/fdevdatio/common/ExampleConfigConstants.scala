@@ -11,6 +11,6 @@ object ExampleConfigConstants {
   val PhonesConfig: String = s"$InputConfig.t_fdev_phones"
   val CustomersPhonesConfig: String = s"$OutputConfig.t_fdev_customersphones"
 
-  val JwkDate: String = s"$ParamsConfig.jwk_date"
+  val JwkDateConfig: String = s"$ParamsConfig.jwk_date"
 
 }

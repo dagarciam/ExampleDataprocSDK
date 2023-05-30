@@ -1,36 +1,39 @@
 package com.bbva.datioamproduct.fdevdatio
 
-import com.bbva.datioamproduct.fdevdatio.common.ExampleConfigConstants
+import com.bbva.datioamproduct.fdevdatio.common.ExampleConfigConstants._
 import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals.JoinTypes
 import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers._
 import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones._
-import com.bbva.datioamproduct.fdevdatio.transformations.Transformations._
-import com.bbva.datioamproduct.fdevdatio.utils.IOUtils
+import com.bbva.datioamproduct.fdevdatio.transformationsExample._
+import com.bbva.datioamproduct.fdevdatio.utils.IOUtilsExample
 import com.datio.dataproc.sdk.api.SparkProcess
 import com.datio.dataproc.sdk.api.context.RuntimeContext
 import com.datio.dataproc.sdk.schema.exception.DataprocSchemaException.InvalidDatasetException
 import com.typesafe.config.Config
-import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.{Column, DataFrame}
+import org.apache.spark.sql.functions.typedLit
 import org.slf4j.{Logger, LoggerFactory}
 
 import scala.util.{Failure, Success, Try}
 
-class Engine extends SparkProcess with IOUtils {
+class Engine extends SparkProcess with IOUtilsExample {
   private val logger: Logger = LoggerFactory.getLogger(this.getClass)
 
   val OK: Int = 0
   val ERR: Int = -1
+  val Nulo= None.asInstanceOf[String]
+
 
   override def runProcess(runtimeContext: RuntimeContext): Int = Try {
     logger.info(s"Process Id: ${runtimeContext.getProcessId}")
     val config: Config = runtimeContext.getConfig
 
-    val jwkDate: String = config.getString(ExampleConfigConstants.JwkDate)
+    val jwkDate: String = config.getString(JwkDateConfig)
 
     //Load inputs
-    val phonesConfig: Config = config.getConfig(ExampleConfigConstants.PhonesConfig)
+    val phonesConfig: Config = config.getConfig(PhonesConfig)
     val phonesDF: DataFrame = read(phonesConfig)
-    val customersConfig: Config = config.getConfig(ExampleConfigConstants.CustomersConfig)
+    val customersConfig: Config = config.getConfig(CustomersConfig)
     val customersDF: DataFrame = read(customersConfig)
 
     // Regla 1, 2, 3
@@ -39,6 +42,7 @@ class Engine extends SparkProcess with IOUtils {
       Seq(CustomerId.name, DeliveryId.name),
       JoinTypes.INNER
     )
+
 
     val outputDF: DataFrame = customerPhonesDF
       .addColumn(CustomerVip()) //Regla 4
@@ -51,7 +55,7 @@ class Engine extends SparkProcess with IOUtils {
       .fitToSchema() // Selecciona únicamente las columnas que el esquema indica
 
     //Writing output (read conf file format)
-    val customersPhonesConfig: Config = config.getConfig(ExampleConfigConstants.CustomersPhonesConfig)
+    val customersPhonesConfig: Config = config.getConfig(CustomersPhonesConfig)
     write(outputDF, customersPhonesConfig)
 
   } match {
