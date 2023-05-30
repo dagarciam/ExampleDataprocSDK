@@ -24,26 +24,32 @@
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-functions</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-io</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-schema</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-datiosparksession</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-launcher</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -131,6 +137,36 @@
         <profile>
             <id>run-local</id>
             <dependencies>
+                <dependency>
+                    <groupId>com.datio.dataproc.sdk</groupId>
+                    <artifactId>dataproc-sdk-api</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.datio.dataproc.sdk</groupId>
+                    <artifactId>dataproc-sdk-functions</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.datio.dataproc.sdk</groupId>
+                    <artifactId>dataproc-sdk-io</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.datio.dataproc.sdk</groupId>
+                    <artifactId>dataproc-sdk-schema</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.datio.dataproc.sdk</groupId>
+                    <artifactId>dataproc-sdk-datiosparksession</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.datio.dataproc.sdk</groupId>
+                    <artifactId>dataproc-sdk-launcher</artifactId>
+                    <scope>compile</scope>
+                </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
                     <artifactId>spark-core_${scala.binary.version}</artifactId>
