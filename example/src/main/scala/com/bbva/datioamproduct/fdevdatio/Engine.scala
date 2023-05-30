@@ -21,8 +21,6 @@ class Engine extends SparkProcess with IOUtilsExample {
 
   val OK: Int = 0
   val ERR: Int = -1
-  val Nulo= None.asInstanceOf[String]
-
 
   override def runProcess(runtimeContext: RuntimeContext): Int = Try {
     logger.info(s"Process Id: ${runtimeContext.getProcessId}")

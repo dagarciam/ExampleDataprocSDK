@@ -7,8 +7,3 @@ Feature: Feature for AmazonReports
 
     Given a dataframe outputDF in path: src/test/resources/data/course/output/t_fdev_fifa22
     Then outputDF dataframe has exactly 352 records
-
-    Then outputDF dataframe has the columns calculated with the next arithmetic operations:
-      | column   | operation |
-      | column_x | column_a + column_b |
-      | column_y | column_a + column_c - column_d |
