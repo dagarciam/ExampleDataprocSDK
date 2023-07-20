@@ -1,11 +1,12 @@
 package com.bbva.datioamproduct.fdevdatio
 
 import com.datio.dataproc.sdk.launcher.SparkLauncher
-import org.slf4j.{Logger, LoggerFactory}
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 
 object Launcher {
-  private val logger:Logger = LoggerFactory.getLogger(this.getClass)
+  private val logger: Logger = LoggerFactory.getLogger(this.getClass)
 
   /**
    * Launch your implementation of SparkProcess
@@ -13,6 +14,7 @@ object Launcher {
    * @param args the only needed argument is the path to the configuration file
    */
   def main(args: Array[String]): Unit = {
+    logger.error("Hola mundo")
     if (args.length == 0) {
       logger.error("Parameter configuration file path is mandatory. Exiting...")
       System.exit(1000)

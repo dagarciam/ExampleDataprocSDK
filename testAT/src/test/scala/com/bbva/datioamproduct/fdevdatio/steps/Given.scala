@@ -7,7 +7,8 @@ import com.datio.dataproc.sdk.datiosparksession.DatioSparkSession
 import org.apache.spark.sql.DataFrame
 
 class Given extends ScalaDsl with EN with Matchers {
-  lazy val datioSpark: DatioSparkSession = DatioSparkSession.getOrCreate()
+  lazy val datioSparkSession: DatioSparkSession = DatioSparkSession.getOrCreate()
+
   Given("""^a config file with path: (.*)$""") {
     path: String => {
       Common.configPath = path
@@ -16,7 +17,14 @@ class Given extends ScalaDsl with EN with Matchers {
 
   Given("""^a dataframe (\S+) in path: (.*)$""") {
     (dfName: String, path: String) => {
-      val df: DataFrame = datioSpark.read().parquet(path)
+      val df: DataFrame = datioSparkSession.read().parquet(path)
+      Common.dfMap.put(dfName, df)
+    }
+  }
+
+  Given("""^a table (\S+) as DataFrame with alias (.*)$""") {
+    (tableName: String, dfName: String) => {
+      val df: DataFrame = datioSparkSession.read().table(tableName)
       Common.dfMap.put(dfName, df)
     }
   }

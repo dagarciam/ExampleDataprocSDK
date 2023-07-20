@@ -8,11 +8,14 @@ import com.bbva.datioamproduct.fdevdatio.transformations.Transformations._
 import com.bbva.datioamproduct.fdevdatio.utils.IOUtils
 import com.datio.dataproc.sdk.api.SparkProcess
 import com.datio.dataproc.sdk.api.context.RuntimeContext
+import com.datio.dataproc.sdk.datiofilesystem.{DatioFileSystem, DatioPath}
 import com.datio.dataproc.sdk.schema.exception.DataprocSchemaException.InvalidDatasetException
 import com.typesafe.config.Config
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.{col, desc}
 import org.slf4j.{Logger, LoggerFactory}
 
+import java.net.URI
 import scala.util.{Failure, Success, Try}
 
 class Engine extends SparkProcess with IOUtils {
@@ -30,6 +33,7 @@ class Engine extends SparkProcess with IOUtils {
     //Load inputs
     val phonesConfig: Config = config.getConfig(ExampleConfigConstants.PhonesConfig)
     val phonesDF: DataFrame = read(phonesConfig)
+
     val customersConfig: Config = config.getConfig(ExampleConfigConstants.CustomersConfig)
     val customersDF: DataFrame = read(customersConfig)
 
@@ -49,10 +53,12 @@ class Engine extends SparkProcess with IOUtils {
       .addColumn(JwkDate(jwkDate)) //Regla 9
       .cleanNfcColumn() //Regla 10
       .fitToSchema() // Selecciona únicamente las columnas que el esquema indica
-
+    
     //Writing output (read conf file format)
     val customersPhonesConfig: Config = config.getConfig(ExampleConfigConstants.CustomersPhonesConfig)
     write(outputDF, customersPhonesConfig)
+
+    outputDF.show()
 
   } match {
     case Success(_) => OK

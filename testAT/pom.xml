@@ -11,9 +11,9 @@
 
     <artifactId>testAT</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
 
-    <name>2022Q3G5 Acceptance Tests</name>
+    <name>2023Q2 Acceptance Tests</name>
 
     <properties>
         <cucumber.version>5.6.0</cucumber.version>
@@ -24,38 +24,38 @@
         <dependency>
             <groupId>com.bbva.datioamproduct</groupId>
             <artifactId>example</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.2.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-launcher</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-api</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-functions</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-io</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-schema</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.datio.dataproc.sdk</groupId>
             <artifactId>dataproc-sdk-datiosparksession</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -103,6 +103,11 @@
             <version>${scalatest.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_${scala.binary.version}</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -116,6 +121,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <argLine>-Dspark.master=local[*]</argLine>
+                    <argLine>-Dorg.apache.logging.log4j.level=INFO</argLine>
+                    <argLine>-Dspark.sql.catalogImplementation=hive</argLine>
+                    <argLine>-Dhive.exec.dynamic.partition=true</argLine>
+                    <argLine>-Dhive.exec.dynamic.partition.mode=nonstrict</argLine>
+                    <argLine>-Dspark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension</argLine>
+                    <argLine>-Dspark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog</argLine>
+                    <argLine>-Dspark.hadoop.javax.jdo.option.ConnectionURL=jdbc:derby:memory:db;create=true</argLine>
                 </configuration>
             </plugin>
         </plugins>

@@ -145,7 +145,7 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 
 testAT/src/test/resources/docker/datio/spark/lib
-testAT/src/test/resources/data/output/*
-example/src/test/resources/data/output/*
-indra_course/src/test/resources/data/output/*
-indra_course_commons/src/test/resources/data/output/*
+
+metastore_db
+example/src/test/resources/warehouse/output.db
+testAT/src/test/resources/warehouse/output.db

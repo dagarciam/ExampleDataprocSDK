@@ -7,44 +7,60 @@ import com.datio.dataproc.sdk.schema.DatioSchema
 import com.typesafe.config.Config
 import org.apache.spark.sql.{DataFrame, SaveMode}
 
+import scala.collection.convert.ImplicitConversions.{`map AsJavaMap`, `set asScala`}
+
+import scala.language.implicitConversions
 import java.net.URI
+import java.util.Optional
 
 trait IOUtils {
   lazy val datioSparkSession: DatioSparkSession = DatioSparkSession.getOrCreate()
 
+  private def getSchema(config: Config): Optional[DatioSchema] = Optional.ofNullable {
+    if (config.hasPath(SchemaPath)) {
+      val schemaPath: String = config.getString(SchemaPath)
+      val icludeMetadata: Boolean = config.getBoolean(IncludeMetadataFields)
+      val icludeDeletedFields: Boolean = config.getBoolean(IncludeDeletedFields)
+
+      DatioSchema.getBuilder.fromURI(URI.create(schemaPath))
+        .withMetadataFields(icludeMetadata)
+        .withDeletedFields(icludeDeletedFields)
+        .build()
+    } else {
+      None.orNull
+    }
+  }
+
+  private def getOptions(config: Config): Map[String, String] = {
+    if (config.hasPath(Options)) {
+      config
+        .getObject(Options).keySet()
+        .map((key: String) => {
+          (key, config.getString(s"$Options.$key"))
+        })
+        .toMap
+    } else {
+      None.orNull
+    }
+  }
+
+
   def read(inputConfig: Config): DataFrame = {
-    val path: String = inputConfig.getString(Path)
+    val schema: DatioSchema = getSchema(inputConfig).orElse(None.orNull)
 
     inputConfig.getString(Type) match {
+      case "table" =>
+
+        datioSparkSession.read()
+          .datioSchema(schema)
+          .table(inputConfig.getString(Table))
+
       case "parquet" =>
-        val schemaPath: String = inputConfig.getString(SchemaPath)
-        val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
-        val overrideSchema: String = inputConfig.getString(OverrideSchema)
-        val mergeSchema: String = inputConfig.getString(MergeSchema)
 
         datioSparkSession.read()
-          .option(OverrideSchemaOption, overrideSchema)
-          .option(MergeSchemaOption, mergeSchema)
+          .options(getOptions(inputConfig))
           .datioSchema(schema)
-          .parquet(path)
-
-      case "csv" =>
-        val schemaPath: String = inputConfig.getString(SchemaPath)
-        val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
-        val delimiter: String = inputConfig.getString(Delimiter)
-        val header: String = inputConfig.getString(Header)
-        datioSparkSession.read()
-          .option(Delimiter, delimiter)
-          .option(Header, header)
-          .datioSchema(schema)
-          .csv(path)
-
-      case "avro" =>
-        val schemaPath: String = inputConfig.getString(SchemaPath)
-        val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath)).build()
-        datioSparkSession.read()
-          .datioSchema(schema)
-          .avro(path)
+          .parquet(inputConfig.getString(Path))
 
       case _@inputType => throw new Exception(s"Formato de archivo no soportado: $inputType")
     }
@@ -57,31 +73,23 @@ trait IOUtils {
       case _@saveMode => throw new Exception(s"Modo de escritura no soportado: $saveMode")
     }
 
-    val path: String = outputConfig.getString(Path)
-
-    val schemaPath: String = outputConfig.getString(SchemaPath)
-    val icludeMetadata: Boolean = outputConfig.getBoolean(IncludeMetadataFields)
-    val icludeDeletedFields: Boolean = outputConfig.getBoolean(IncludeDeletedFields)
-
-    val schema: DatioSchema = DatioSchema.getBuilder.fromURI(URI.create(schemaPath))
-      .withMetadataFields(icludeMetadata)
-      .withDeletedFields(icludeDeletedFields)
-      .build()
+    val schema: DatioSchema = getSchema(outputConfig).orElse(None.orNull)
 
     val partitions: Array[String] = outputConfig.getStringList(Partitions).toArray.map(_.toString)
-    val partitionOverwriteMode: String = outputConfig.getString(PartitionOverwriteMode)
+    val options: Map[String, String] = getOptions(outputConfig)
 
     val writer: DatioDataFrameWriter = datioSparkSession
       .write()
       .mode(mode)
-      .option(PartitionOverwriteModeString, partitionOverwriteMode)
+      .options(options)
       .datioSchema(schema)
       .partitionBy(partitions: _*)
 
     outputConfig.getString(Type) match {
-      case "parquet" => writer.parquet(df, path)
-      case "csv" => writer.csv(df, path)
-      case "avro" => writer.avro(df, path)
+      case "table" => writer.table(df, outputConfig.getString(Table))
+      case "parquet" => writer.parquet(df, outputConfig.getString(Path))
+      case "csv" => writer.csv(df, outputConfig.getString(Path))
+      case "avro" => writer.avro(df, outputConfig.getString(Path))
       case _@outputType => throw new Exception(s"Formato de escritura no soportado: $outputType")
     }
 
