@@ -1,6 +1,6 @@
 package com.bbva.datioamproduct.fdevdatio
 
-import com.bbva.datioamproduct.fdevdatio.testUtils.{ContextProvider, FakeRuntimeContext}
+import com.bbva.datioamproduct.fdevdatio.utils.{ContextProvider, FakeDataCatalog, FakeRuntimeContext}
 
 class EngineTest extends ContextProvider {
 

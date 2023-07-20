@@ -1,4 +1,4 @@
-package com.bbva.datioamproduct.fdevdatio.testUtils
+package com.bbva.datioamproduct.fdevdatio.utils
 
 import com.datio.dataproc.sdk.api.context.RuntimeContext
 import com.typesafe.config.Config

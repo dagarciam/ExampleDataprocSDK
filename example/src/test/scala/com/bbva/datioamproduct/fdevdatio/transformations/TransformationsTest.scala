@@ -6,7 +6,7 @@ import com.bbva.datioamproduct.fdevdatio.common.example.StaticVals.JoinTypes
 import com.bbva.datioamproduct.fdevdatio.common.namings.input.Customers.{CustomerId, DeliveryId, _}
 import com.bbva.datioamproduct.fdevdatio.common.namings.input.Phones._
 import com.bbva.datioamproduct.fdevdatio.common.namings.output.CustomersPhones._
-import com.bbva.datioamproduct.fdevdatio.testUtils.ContextProvider
+import com.bbva.datioamproduct.fdevdatio.utils.ContextProvider
 import com.bbva.datioamproduct.fdevdatio.transformations.Transformations.{CustomersPhonesTransformer, CustomersTransformer, PhonesTransformer}
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.functions.lit

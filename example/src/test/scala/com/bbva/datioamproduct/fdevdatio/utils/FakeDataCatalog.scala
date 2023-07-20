@@ -35,6 +35,7 @@ trait FakeDataCatalog {
 
   private def createTable(schemaPath: String, tableName: String, partitions: List[String] = Nil, db: String = "input")
                          (implicit datioSparkSession: DatioSparkSession): Unit = {
+
     val datioSchema = DatioSchema.getBuilder
       .fromURI(new URI(schemaPath))
       .withMetadataFields(true)
