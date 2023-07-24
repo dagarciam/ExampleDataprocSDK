@@ -19,7 +19,6 @@ Go to your IDE run configurations window and set the following configuration:
  * VM options:
    ```
    -Dspark.master=local[*]
-   -Dspark.master=local[*]
    -Dorg.apache.logging.log4j.level=INFO
    ```
  * Program arguments should be a valid path to a configuration file: `example/src/test/resources/config/application-local.conf`
