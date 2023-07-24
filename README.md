@@ -17,15 +17,11 @@ mvn clean install
 Go to your IDE run configurations window and set the following configuration:
  * Main class: `com.bbva.datioamproduct.fdevdatio.Launcher`
  * VM options:
-   ```-Dspark.master=local[*]
+   ```
+   -Dspark.master=local[*]
    -Dspark.master=local[*]
    -Dorg.apache.logging.log4j.level=INFO
-   -Dspark.sql.catalogImplementation=hive
-   -Dhive.exec.dynamic.partition=true
-   -Dhive.exec.dynamic.partition.mode=nonstrict
-   -Dspark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension
-   -Dspark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog
-   -Dspark.hadoop.javax.jdo.option.ConnectionURL=jdbc:derby:memory:db;create=true```
+   ```
  * Program arguments should be a valid path to a configuration file: `example/src/test/resources/config/application-local.conf`
  * Working directory should point to the root path of the project: `/home/example/workspace/ExampleDataprocSDKTest`
  * Use classpath of the main implementation module => `example`
