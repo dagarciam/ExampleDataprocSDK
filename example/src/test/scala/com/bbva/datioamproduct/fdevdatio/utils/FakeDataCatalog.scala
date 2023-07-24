@@ -2,7 +2,6 @@ package com.bbva.datioamproduct.fdevdatio.utils
 
 import com.datio.dataproc.sdk.datiosparksession.DatioSparkSession
 import com.datio.dataproc.sdk.schema.DatioSchema
-import org.apache.spark.sql.SparkSession
 
 import java.net.URI
 import java.util.Locale

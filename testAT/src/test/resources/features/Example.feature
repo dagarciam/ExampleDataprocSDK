@@ -1,7 +1,7 @@
 Feature: Feature for AmazonReports
 
   Scenario: Test Engine should return 0 in success execution
-    Given a config file with path: src/test/resources/config/application-test.conf
+    Given a config file with path: src/test/resources/config/exampleTestAT.conf
     When I execute the process: Engine
     Then the exit code should be 0
 

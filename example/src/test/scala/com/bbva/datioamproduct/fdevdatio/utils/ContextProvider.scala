@@ -18,7 +18,7 @@ trait ContextProvider extends FlatSpec with BeforeAndAfterAll with Matchers with
 
   @transient var sqlContext: SQLContext = _
 
-  val config: Config = new ProcessConfigLoader().fromPath("src/test/resources/config/application-test.conf")
+  val config: Config = new ProcessConfigLoader().fromPath("src/test/resources/config/exampleTest.conf")
 
   private val sparkWarehouseDir: String = s"${System.getProperty("user.dir")}/src/test/resources/warehouse"
 
