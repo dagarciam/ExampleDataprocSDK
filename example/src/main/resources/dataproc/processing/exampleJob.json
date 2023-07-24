@@ -1,0 +1,16 @@
+{
+  "_id": "fdev-mx-spk-example-01",
+  "runtime": "spark:3.1",
+  "description": "spark-job for example job",
+  "kind": "egression",
+  "streaming": "false",
+  "size": "M",
+  "tags": [],
+  "params": {
+    "artifactUrl": "${repository.endpoint.vdc}/${repository.repo.proc}/com/bbva/datioamproduct/example/${version}/example-${version}-jar-with-dependencies.jar",
+    "configUrl": "${repository.endpoint.vdc}/${repository.repo.proc}/com/bbva/datioamproduct/example/${version}/application.conf",
+    "mainClass": "com.bbva.datioamproduct.fdevdatio.Launcher",
+    "dataprocSdkOverrideVersion": "0.4.3-3.1"
+  },
+  "env": {}
+}
