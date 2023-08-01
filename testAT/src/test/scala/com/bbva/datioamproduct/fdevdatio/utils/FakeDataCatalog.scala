@@ -8,7 +8,7 @@ import java.net.URI
 import java.util.Locale
 
 trait FakeDataCatalog {
-  private val sparkWarehouseDir: String = s"${System.getProperty("user.dir")}/src/test/resources/warehouse"
+  private val sparkWarehouseDir: String = "src/test/resources/warehouse"
 
   def createDataCatalog()(implicit datioSparkSession: DatioSparkSession): Unit = {
     Locale.setDefault(new Locale("CO"))
