@@ -1,0 +1,49 @@
+{
+  "namespace": "mdit",
+  "name": "t_mdit_users",
+  "doc": "TABLA QUE CONTIENE INFORMACION DE CADA USUARIS",
+  "database": "raw",
+  "storageZone": "RAWDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/mdit/data/t_mdit_users",
+  "partitions": ["fecha_corte"],
+  "type": "record",
+  "fields": [{
+    "name": "user_id",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(20)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "user_email",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "complete_name",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "user_age",
+    "type": ["null", "int32"],
+    "logicalFormat": "INT32",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  }, {
+    "name": "user_charge_date",
+    "type": ["date", "null"],
+    "logicalFormat": "DATE",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-dd",
+    "locale": "mx"
+  }]
+}

@@ -1,0 +1,99 @@
+{
+  "namespace": "mdit",
+  "name": "t_mdit_policy",
+  "doc": "TABLA QUE CONTIENE INFORMACION DE CADA POLIZA DE AUTOS",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/kdit/data/t_mdit_policy",
+  "partitions": ["cuttofdate"],
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "id_policy",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "id_client",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "id_car_brand",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "car_color",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "sum_assured",
+    "type": ["null", "decimal(17,2)"],
+    "logicalFormat": "DECIMAL(17,2)",
+    "deleted": false,
+    "metadata": false,
+    "default": null,
+    "locale": "mx"
+  }, {
+    "name": "nomthly_payment",
+    "type": ["null", "decimal(17,2)"],
+    "logicalFormat": "DECIMAL(17,2)",
+    "deleted": false,
+    "metadata": false,
+    "default": null,
+    "locale": "mx"
+  }, {
+    "name": "car_model",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "end_date_validity",
+    "type": ["timestamp", "null"],
+    "logicalFormat": "TIMESTAMP",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-dd HH:mm:ss",
+    "locale": "mx"
+  }, {
+    "name": "current_payment",
+    "type": ["null", "boolean"],
+    "logicalFormat": "BOOLEAN",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  },{
+    "name": "actual_date",
+    "type": ["timestamp", "null"],
+    "logicalFormat": "TIMESTAMP",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-dd HH:mm:ss",
+    "locale": "mx"
+  }
+   ,{
+    "name": "cuttofdate",
+    "type": ["timestamp", "null"],
+    "logicalFormat": "TIMESTAMP",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "format": "yyyy-MM-dd HH:mm:ss",
+    "locale": "mx"
+  }]
+}

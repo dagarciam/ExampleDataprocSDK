@@ -1,0 +1,76 @@
+{
+  "namespace": "mdit",
+  "name": "t_mdit_insurances",
+  "doc": "TABLA QUE CONTIENE INFORMACION DEL SEGURO DE CADA USUARIO",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/mdit/data/t_mdit_insurances",
+  "partitions": ["NA"],
+  "type": "record",
+  "fields": [{
+    "name": "id_policy",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "complete_name",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "brand_car_id",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "incidents_id",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(20)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "car_color",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "repair_amount",
+    "type": ["null", "decimal(17,2)"],
+    "logicalFormat": "DECIMAL(17,2)",
+    "deleted": false,
+    "metadata": false,
+    "default": null,
+    "locale": "mx"
+  }, {
+    "name": "car_model",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  },{
+    "name": "current_payment",
+    "type": ["null", "boolean"],
+    "logicalFormat": "BOOLEAN",
+    "deleted": false,
+    "metadata": false,
+    "default": null
+  },{
+    "name": "brand_name",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(50)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }]
+}

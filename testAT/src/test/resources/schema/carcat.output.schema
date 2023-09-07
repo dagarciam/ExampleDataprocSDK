@@ -1,0 +1,41 @@
+{
+  "namespace": "mdit",
+  "name": "t_mdit_creditos",
+  "doc": "Tabla que contiene el catalogo de autos",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/mdit/data/t_mdit_creditos",
+  "partitions": ["NA"],
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "brand_car_id",
+    "type": "int64",
+    "logicalFormat": "NUMERIC BIG",
+    "deleted": false,
+    "metadata": false,
+    "default": 0
+  }, {
+    "name": "brand_name",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "country_name",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "velocity_max_amount",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }]
+}

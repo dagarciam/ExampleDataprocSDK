@@ -1,0 +1,43 @@
+{
+  "namespace": "mdit",
+  "name": "t_mdit_incidents",
+  "doc": "TABLA QUE CONTIENE INFORMACION DE CADA INCIDENTE VEHICULAR",
+  "database": "master",
+  "storageZone": "MASTERDATA",
+  "storageType": "HDFS-Parquet",
+  "physicalPath": "/data/master/mdit/data/t_mdit_incidents",
+  "partitions": ["load_date"],
+  "securityLevel": "L1",
+  "type": "record",
+  "fields": [{
+    "name": "incident_id",
+    "type": ["string", "null"],
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": "A"
+  }, {
+    "name": "policy_id",
+    "type": "string",
+    "logicalFormat": "ALPHANUMERIC(100)",
+    "deleted": false,
+    "metadata": false,
+    "default": ""
+  }, {
+    "name": "repair_amount",
+    "type": "decimal(17,2)",
+    "logicalFormat": "DECIMAL(17,2)",
+    "deleted": false,
+    "metadata": false,
+    "default": 0.0,
+    "locale": "mx"
+  }, {
+    "name": "load_date",
+    "type": "date",
+    "logicalFormat": "DATE",
+    "deleted": false,
+    "metadata": false,
+    "default": "",
+    "locale": "mx"
+  }]
+}
